@@ -110,13 +110,14 @@ export default class QuestionRadio extends Component<> {
   }
 }
 
-// StyleSheet - Should be extracted to External File
+// Reusable Style Objects for Style Sheet - Should be central
 const boldText = { fontWeight: 'bold' }
 const leftAlign = { textAlign: 'left' }
 const rightAlign = { textAlign: 'right' }
 const bottomPadding = { paddingBottom: 2, marginBottom: 10 }
 const radioActive = { backgroundColor: 'green' }
 
+// Convert Into Formatted Style Sheet
 const styles = StyleSheet.create({
   container: {
     flex: 1,
