@@ -1,3 +1,4 @@
+// --- Package Imports
 import React, { Component } from 'react';
 import {
   Platform,
@@ -13,15 +14,37 @@ import RadioForm, {
   RadioButtonLabel
 } from 'react-native-simple-radio-button';
 
+import * as firebase from 'firebase';
+import {
+  FIREBASE_API,
+  FIREBASE_AUTH,
+  FIREBASE_URL,
+  FIREBASE_BUCKET,
+} from './environment-variables.js'
+
+
+const firebaseConfig = {
+  apiKey: FIREBASE_API,
+  authDomain: FIREBASE_AUTH,
+  databaseURL: FIREBASE_URL,
+  storageBucket: FIREBASE_BUCKET,
+};
+
+// const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+// --- Component Imports
 import QuestionRadio from './components/QuestionRadio'
 import QuestionInput from './components/QuestionInput'
+import QuestionSlider from './components/QuestionSlider'
 
 export default class App extends Component<> {
+
   render() {
     return (
       <View style={styles.container}>
         <QuestionRadio />
         <QuestionInput />
+        <QuestionSlider />
       </View>
     )
   }

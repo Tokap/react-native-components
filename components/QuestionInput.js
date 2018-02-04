@@ -35,6 +35,11 @@ export default class QuestionInput extends Component<> {
   }
 
   render() {
+    let formdata = new FormData();
+    formdata.append("product[name]", 'test')
+
+    console.log('Form Data: ', formdata)
+
     return (
       <View style={styles.container}>
 
@@ -46,7 +51,7 @@ export default class QuestionInput extends Component<> {
           onChangeText={this.calculateRate}>
         </TextInput>
 
-        <Text>Total Tip:</Text>
+        <Text>Total Rate:</Text>
         <Text style={styles.tipCalculation}>{this.state.rateCalc}</Text>
 
       </View>
