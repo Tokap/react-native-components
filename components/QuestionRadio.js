@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import {
-  Platform,
   StyleSheet,
   Text,
-  TextInput,
   View
 } from 'react-native';
 
@@ -12,6 +10,13 @@ import RadioForm, {
   RadioButtonInput,
   RadioButtonLabel
 } from 'react-native-simple-radio-button';
+
+import {
+  boldText,
+  bottomPadding,
+  leftAlign,
+  rightAlign,
+} from './styles/core-objects'
 
 export default class QuestionRadio extends Component<> {
   constructor(props) {
@@ -41,17 +46,14 @@ export default class QuestionRadio extends Component<> {
     if (i === 0 && this.state.value === 0) {
       return styles.activeFirstButton
     }
-
     // Basic default styling for first button
     if (i === 0) {
       return styles.firstButton
     }
-
     // Otherwise, if active return active styling
     if (i === this.state.value) {
       return styles.radioActive
     }
-
     // Else, return white fill
     return styles.radioInactive
   }
@@ -82,7 +84,6 @@ export default class QuestionRadio extends Component<> {
                 isSelected={this.state.value3Index === i}
                 onPress={(value) => {this.setState({value:value})}}
                 borderWidth={1}
-                buttonInnerColor={this.state.value === i ? 'green' : 'orange'}
                 buttonOuterColor={this.state.value === i ? 'green' : 'orange'}
                 buttonSize={10}
                 buttonOuterSize={40}
@@ -110,11 +111,7 @@ export default class QuestionRadio extends Component<> {
   }
 }
 
-// Reusable Style Objects for Style Sheet - Should be central
-const boldText = { fontWeight: 'bold' }
-const leftAlign = { textAlign: 'left' }
-const rightAlign = { textAlign: 'right' }
-const bottomPadding = { paddingBottom: 2, marginBottom: 10 }
+// StyleSheet - Should be extracted to External File
 const radioActive = { backgroundColor: 'green' }
 
 // Convert Into Formatted Style Sheet
@@ -127,11 +124,10 @@ const styles = StyleSheet.create({
   },
   boldText: { ...boldText },
   questionHeader: { ...boldText, ...leftAlign, ...bottomPadding },
-  radioButton: { ...rightAlign, marginRight: 30 },
   firstButton: { marginLeft: -35 },
   activeFirstButton: { marginLeft: -35, ...radioActive },
 
   radioLabel: { fontSize: 20, color: '#2ecc71' },
-  radioActive: { backgroundColor: 'green' },
+  radioActive: { ...radioActive },
   radioInactive: { backgroundColor: 'white' },
 });

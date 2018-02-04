@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import {
-  Platform,
   StyleSheet,
   Text,
   TextInput,
   View
 } from 'react-native';
+
+import {
+  boldText,
+  leftAlign,
+} from './styles/core-objects'
 
 export default class QuestionInput extends Component<> {
   constructor(props) {
@@ -13,20 +17,20 @@ export default class QuestionInput extends Component<> {
     this.state = {
       amountTotal: 0,
       tipPercentage: 0.15,
-      tipTotal: 0,
+      rateCalc: 0,
     };
 
     // Don't forget you need to bind the Functions here
-    this.calculateTip = this.calculateTip.bind(this)
+    this.calculateRate = this.calculateRate.bind(this)
   }
 
   // Support Functions
-  calculateTip(value) {
+  calculateRate(value) {
     const newValue = Number(value)
 
     this.setState({
       amountTotal: newValue,
-      tipTotal: newValue * this.state.tipPercentage,
+      rateCalc: newValue * this.state.tipPercentage,
     })
   }
 
@@ -39,22 +43,16 @@ export default class QuestionInput extends Component<> {
         </Text>
         <TextInput
           style={styles.textInput}
-          onChangeText={this.calculateTip}>
+          onChangeText={this.calculateRate}>
         </TextInput>
 
         <Text>Total Tip:</Text>
-        <Text style={styles.tipCalculation}>{this.amountTotal}</Text>
+        <Text style={styles.tipCalculation}>{this.state.rateCalc}</Text>
 
       </View>
     );
   }
 }
-
-// Reusable Style Objects for Style Sheet - Should be central
-const boldText = { fontWeight: 'bold' }
-const leftAlign = { textAlign: 'left' }
-const rightAlign = { textAlign: 'right' }
-const bottomPadding = { paddingBottom: 2, marginBottom: 10 }
 
 // Convert Into Formatted Style Sheet
 const styles = StyleSheet.create({
@@ -66,7 +64,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   textInput: {
-    textAlign: 'left',
+    ...leftAlign,
     color: '#333333',
     margin: 5,
     height: 50,
