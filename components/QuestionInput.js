@@ -18,7 +18,7 @@ export default class QuestionInput extends Component<> {
       amountTotal: 0,
       tipPercentage: 0.15,
       rateCalc: 0,
-    };
+    }
 
     // Don't forget you need to bind the Functions here
     this.calculateRate = this.calculateRate.bind(this)
@@ -35,10 +35,9 @@ export default class QuestionInput extends Component<> {
   }
 
   render() {
-    let formdata = new FormData();
-    formdata.append("product[name]", 'test')
-
-    console.log('Form Data: ', formdata)
+    // TODO: Remove Form Data example after process flow complete
+    // let formdata = new FormData();
+    // formdata.append("product[name]", 'test')
 
     return (
       <View style={styles.container}>

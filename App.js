@@ -30,25 +30,27 @@ const firebaseConfig = {
   storageBucket: FIREBASE_BUCKET,
 };
 
-// const firebaseApp = firebase.initializeApp(firebaseConfig);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 // --- Component Imports
 import QuestionRadio from './components/QuestionRadio'
 import QuestionInput from './components/QuestionInput'
 import QuestionSlider from './components/QuestionSlider'
+import MultiPageForm from './components/MultiPageForm'
 
 export default class App extends Component<> {
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <QuestionRadio />
-        <QuestionInput />
-        <QuestionSlider />
-      </View>
-    )
+  constructor(props) {
+    super(props)
+    this.state = { trackedState: {}, formData: {} };
   }
 
+  componentDidMount() {
+    // Load Required Data on Component Mounting
+  }
+
+  render() {
+    return <MultiPageForm />
+  }
 }
 
 const styles = StyleSheet.create({
