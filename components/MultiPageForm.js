@@ -40,8 +40,6 @@ export default class MultiPageForm extends Component<> {
   }
 
   render() {
-    console.log('This State: ', this.state)
-
     let formField
     if (this.state.currentPage === 1) {
       formField = <QuestionRadio pageUpdate = {this.pageUpdate}/>
