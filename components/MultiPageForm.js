@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  Button,
   StyleSheet,
   Text,
   TextInput,
@@ -21,6 +22,7 @@ export default class MultiPageForm extends Component<> {
     // Set Starting State
     this.state = {
       currentPage: 1,
+      maxPage: 3,
       // Load testing data
       ...stats
     }
@@ -34,8 +36,11 @@ export default class MultiPageForm extends Component<> {
 
   pageUpdate(event) {
     event.preventDefault()
+    const { currentPage, maxPage } = this.state
+    const newPage = currentPage === maxPage ? 1 : currentPage + 1
+
     this.setState({
-      currentPage: this.state.currentPage += 1
+      currentPage: newPage
     })
   }
 
@@ -52,6 +57,12 @@ export default class MultiPageForm extends Component<> {
     return (
       <View style={styles.container}>
         {formField}
+        <Button
+          onPress={this.pageUpdate}
+          title="Next Question"
+          color="#833584"
+          accessibilityLabel="Next Question"
+        />
       </View>
     )
   }
